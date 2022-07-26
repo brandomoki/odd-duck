@@ -1,0 +1,43 @@
+body {
+  
+  background-color: rgb(245, 240, 187);
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+.img-container {
+  margin-top: 100px;
+  background-color: rgb(196, 223, 170);
+ 
+  }
+  
+  
+  #resultsContainer { 
+    width: 500px;
+    background-color: rgb(144, 200, 172);
+   }
+  .img-one { 
+
+   }
+  .img-two { 
+
+   }
+  .img-three { 
+
+  }
+  #show-results-btn { 
+    width: 165px;
+    height: 45px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    cursor: pointer;
+    
+    
+    background-color: rgb(115, 169, 173);
+    border-radius: 5px;
+  
+    
+  }
+    
+
