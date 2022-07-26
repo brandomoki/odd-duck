@@ -47,6 +47,7 @@ function randomIndexGenerator(){
 }
 
 
+
 function duckArray() {
   for(let i=0; i < duckNames.length; i++){
     if(duckNames[i] === 'sweep'){
@@ -110,7 +111,7 @@ function handleResults(){
   if(totalRounds === 0){
     for(let i = 0; i < allOddDucks.length; i++){
       let liElem = document.createElement('li');
-      liElem.textContent = `${allOddDucks[i].name}: views: ${allOddDucks[i].views}, votes: ${allOddDucks[i].votes}`;
+      liElem.textContent = `${allOddDucks[i].name}, views: ${allOddDucks[i].views}, votes: ${allOddDucks[i].votes}`;
       resultsList.append(liElem);
     }
     resultsButton.removeEventListener('click', handleResults);
@@ -122,3 +123,5 @@ function handleResults(){
 
 imgContainer.addEventListener('click', handleClick);
 resultsButton.addEventListener('click', handleResults);
+
+
