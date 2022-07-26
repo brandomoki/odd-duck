@@ -63,7 +63,7 @@ function renderImg() {
   let imgRenderTwo = randomIndexGenerator();
   let imgRenderThree = randomIndexGenerator();
 
-  while(imgRenderOne === imgRenderTwo || imgRenderThree){
+  while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
     imgRenderTwo = randomIndexGenerator();
     imgRenderThree = randomIndexGenerator();
   }
