@@ -1,7 +1,14 @@
+header {
+  font-weight: bold;
+}
+
 body {
-  
+
+  display: flex;
+  justify-content: center;
   background-color: rgb(245, 240, 187);
   font-family: Arial, Helvetica, sans-serif;
+  margin-top: 150px;
   
 }
 
@@ -10,21 +17,40 @@ body {
   background-color: rgb(196, 223, 170);
  
   }
-  
+  #img-one {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-style: groove;
+    
+    border-radius: 5%;
+    border-color: rgb(144, 200, 172);
+  }
+  #img-two {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-style: groove;
+    
+    border-radius: 5%;
+    border-color: rgb(144, 200, 172);
+  }
+  #img-three {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-style: groove;
+    
+    border-radius: 5%;
+    border-color: rgb(144, 200, 172);
+    
+  }
   
   #resultsContainer { 
     width: 500px;
     background-color: rgb(144, 200, 172);
    }
-  .img-one { 
 
-   }
-  .img-two { 
-
-   }
-  .img-three { 
-
-  }
   #show-results-btn { 
     width: 165px;
     height: 45px;
@@ -38,6 +64,10 @@ body {
     border-radius: 5px;
   
     
+  }
+  #sectionChart {
+    width: 900px;
+    height: 500px;
   }
     
 

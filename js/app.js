@@ -15,9 +15,9 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 
 let resultsButton = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('results-list');
+// let resultsList = document.getElementById('results-list');
 
-
+let canvasElement = document.getElementById('myChart');
 
 //********************** Consructor Function *********************/
 
@@ -41,6 +41,8 @@ function OddDuck(name, photoTag = 'jpg'){
 
 //*********************** Helper Function *********************** */
 
+let productIndexArr = [];
+
 function randomIndexGenerator(){
   return Math.floor(Math.random() * allOddDucks.length);
 
@@ -60,14 +62,26 @@ function duckArray() {
 duckArray();
 
 function renderImg() {
-  let imgRenderOne = randomIndexGenerator();
-  let imgRenderTwo = randomIndexGenerator();
-  let imgRenderThree = randomIndexGenerator();
 
-  while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
-    imgRenderTwo = randomIndexGenerator();
-    imgRenderThree = randomIndexGenerator();
+
+
+  while(productIndexArr.length < 6){
+    let randomNum = randomIndexGenerator();
+    if(!productIndexArr.includes(randomNum)){
+      productIndexArr.push(randomNum);
+    }
   }
+
+  console.log(productIndexArr);
+
+  let imgRenderOne = productIndexArr.pop();
+  let imgRenderTwo = productIndexArr.pop();
+  let imgRenderThree = productIndexArr.pop();
+
+  // while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
+  //   imgRenderTwo = randomIndexGenerator();
+  //   imgRenderThree = randomIndexGenerator();
+  // }
 
 
   imgOne.src = allOddDucks[imgRenderOne].photo;
@@ -109,15 +123,96 @@ function handleClick(event){
 
 function handleResults(){
   if(totalRounds === 0){
-    for(let i = 0; i < allOddDucks.length; i++){
-      let liElem = document.createElement('li');
-      liElem.textContent = `${allOddDucks[i].name}, views: ${allOddDucks[i].views}, votes: ${allOddDucks[i].votes}`;
-      resultsList.append(liElem);
-    }
+    renderMyChart();
+
+    // for(let i = 0; i < allOddDucks.length; i++){
+    //   let liElem = document.createElement('li');
+    //   liElem.textContent = `${allOddDucks[i].name}, views: ${allOddDucks[i].views}, votes: ${allOddDucks[i].votes}`;
+    //   resultsList.append(liElem);
+    // }
     resultsButton.removeEventListener('click', handleResults);
   }
 }
 
+const ctx = document.getElementById('myChart').getContext('2d');
+//***************************** Add display chart ************************** */
+
+function renderMyChart(){
+  let chartName = [];
+  let chartVotes = [];
+  let chartViews = [];
+
+
+  for(let i = 0; i < allOddDucks.length; i++){
+    chartName.push(allOddDucks[i].name);
+    chartVotes.push(allOddDucks[i].votes);
+    chartViews.push(allOddDucks[i].views);
+  }
+
+
+
+
+
+  const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: chartName,
+      datasets: [{
+        label: '# of Views',
+        data: chartViews,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of Votes',
+        data: chartVotes,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+}
+// renderMyChart();
+console.log(renderMyChart);
+// const myChart = new Chart(canvasElement, myObj);
 
 //**************************Event Listeners *********************** */
 
