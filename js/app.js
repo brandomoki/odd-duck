@@ -33,7 +33,7 @@ function OddDuck(name, photoTag = 'jpg'){
 
 
 
-
+console
 
 //************************ Object Creation ************************/
 
@@ -74,9 +74,9 @@ function renderImg() {
 
   console.log(productIndexArr);
 
-  let imgRenderOne = productIndexArr.pop();
-  let imgRenderTwo = productIndexArr.pop();
-  let imgRenderThree = productIndexArr.pop();
+  let imgRenderOne = productIndexArr.shift();
+  let imgRenderTwo = productIndexArr.shift();
+  let imgRenderThree = productIndexArr.shift();
 
   // while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
   //   imgRenderTwo = randomIndexGenerator();
@@ -161,12 +161,12 @@ function renderMyChart(){
         label: '# of Views',
         data: chartViews,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'purple',
+          'purple',
+          'purple',
+          'purple',
+          'purple',
+          'purple'
         ],
         borderColor: [
           'rgba(255, 99, 132, 1)',
