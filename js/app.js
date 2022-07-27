@@ -15,9 +15,20 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 
 let resultsButton = document.getElementById('show-results-btn');
-let resultsList = document.getElementById('results-list');
+// let resultsList = document.getElementById('results-list');
 
 let canvasElement = document.getElementById('myChart');
+
+
+//********************** LocalStorage continues
+
+
+let retreivedDucks = localStorage.getItem('myDucks');
+console.log('retreivedDucks', retreivedDucks);
+
+let parsedDucks = JSON.parse(retreivedDucks);
+console.log('parsed ducks>>>', parsedDucks);
+
 
 //********************** Consructor Function *********************/
 
@@ -37,7 +48,7 @@ function OddDuck(name, photoTag = 'jpg'){
 
 //************************ Object Creation ************************/
 
-
+console.log('allOddDucks >>>>>>>', allOddDucks);
 
 //*********************** Helper Function *********************** */
 
@@ -50,17 +61,29 @@ function randomIndexGenerator(){
 
 
 
+
+
+// duckArray();
+
 function duckArray() {
-  for(let i=0; i < duckNames.length; i++){
-    if(duckNames[i] === 'sweep'){
-      new OddDuck(duckNames[i], 'png');
-    } else {
-      new OddDuck(duckNames[i]);
+  if(retreivedDucks){
+    allOddDucks = parsedDucks;
+  } else {
+  
+    for(let i=0; i < duckNames.length; i++){
+      if(duckNames[i] === 'sweep'){
+        new OddDuck(duckNames[i], 'png');
+      } else {
+        new OddDuck(duckNames[i]);
+      }
     }
   }
+
+
+
+  
 }
 duckArray();
-
 function renderImg() {
 
 
@@ -72,7 +95,7 @@ function renderImg() {
     }
   }
 
-  console.log(productIndexArr);
+  // console.log(productIndexArr);
 
   let imgRenderOne = productIndexArr.shift();
   let imgRenderTwo = productIndexArr.shift();
@@ -121,6 +144,16 @@ function handleClick(event){
   renderImg();
 
   if(totalRounds === 0){
+
+    /*******************************local storage starts heere**********/
+    //****************************step 1 stringify data the array allodduck
+
+    let stringifiedDucks = JSON.stringify(allOddDucks);
+    console.log('stringed ducks>>>', stringifiedDucks);
+
+    //************************add to localStorage*******************
+    localStorage.setItem('myDucks', stringifiedDucks);
+
     imgContainer.removeEventListener('click', handleClick);
   }
 }
@@ -215,7 +248,7 @@ function renderMyChart(){
 
 }
 // renderMyChart();
-console.log(renderMyChart);
+// console.log(renderMyChart);
 // const myChart = new Chart(canvasElement, myObj);
 
 //**************************Event Listeners *********************** */
