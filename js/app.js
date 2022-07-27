@@ -15,7 +15,7 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 
 let resultsButton = document.getElementById('show-results-btn');
-// let resultsList = document.getElementById('results-list');
+let resultsList = document.getElementById('results-list');
 
 let canvasElement = document.getElementById('myChart');
 
@@ -33,7 +33,7 @@ function OddDuck(name, photoTag = 'jpg'){
 
 
 
-console
+
 
 //************************ Object Creation ************************/
 
@@ -86,14 +86,17 @@ function renderImg() {
 
   imgOne.src = allOddDucks[imgRenderOne].photo;
   imgOne.alt = allOddDucks[imgRenderOne].name;
+  imgOne.name = allOddDucks[imgRenderOne].name;
   allOddDucks[imgRenderOne].views++;
 
   imgTwo.src = allOddDucks[imgRenderTwo].photo;
   imgTwo.alt = allOddDucks[imgRenderTwo].name;
+  imgTwo.name = allOddDucks[imgRenderTwo].name;
   allOddDucks[imgRenderTwo].views++;
 
   imgThree.src = allOddDucks[imgRenderThree].photo;
   imgThree.alt = allOddDucks[imgRenderThree].name;
+  imgThree.name = allOddDucks[imgRenderThree].name;
   allOddDucks[imgRenderThree].views++;
 
 }
@@ -114,6 +117,7 @@ function handleClick(event){
   }
 
   totalRounds--;
+
   renderImg();
 
   if(totalRounds === 0){
@@ -169,12 +173,12 @@ function renderMyChart(){
           'purple'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow'
         ],
         borderWidth: 1
       },
@@ -182,20 +186,20 @@ function renderMyChart(){
         label: '# of Votes',
         data: chartVotes,
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow',
+          'yellow'
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
+          'black',
+          'black',
+          'black',
+          'black',
+          'black',
+          'black'
         ],
         borderWidth: 1
       }]
