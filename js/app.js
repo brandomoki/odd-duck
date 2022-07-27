@@ -41,6 +41,8 @@ function OddDuck(name, photoTag = 'jpg'){
 
 //*********************** Helper Function *********************** */
 
+let productIndexArr = [];
+
 function randomIndexGenerator(){
   return Math.floor(Math.random() * allOddDucks.length);
 
@@ -60,14 +62,26 @@ function duckArray() {
 duckArray();
 
 function renderImg() {
-  let imgRenderOne = randomIndexGenerator();
-  let imgRenderTwo = randomIndexGenerator();
-  let imgRenderThree = randomIndexGenerator();
 
-  while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
-    imgRenderTwo = randomIndexGenerator();
-    imgRenderThree = randomIndexGenerator();
+
+
+  while(productIndexArr.length < 6){
+    let randomNum = randomIndexGenerator();
+    if(!productIndexArr.includes(randomNum)){
+      productIndexArr.push(randomNum);
+    }
   }
+
+  console.log(productIndexArr);
+
+  let imgRenderOne = productIndexArr.pop();
+  let imgRenderTwo = productIndexArr.pop();
+  let imgRenderThree = productIndexArr.pop();
+
+  // while(imgRenderOne === imgRenderTwo || imgRenderTwo === imgRenderThree || imgRenderOne === imgRenderThree){
+  //   imgRenderTwo = randomIndexGenerator();
+  //   imgRenderThree = randomIndexGenerator();
+  // }
 
 
   imgOne.src = allOddDucks[imgRenderOne].photo;
